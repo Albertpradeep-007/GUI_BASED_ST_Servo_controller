@@ -91,7 +91,7 @@ Write-Host ""
 Write-Host "Checking dependencies..." -ForegroundColor Yellow
 
 # Check if Flask is already installed
-$flaskInstalled = python -c "import flask; print('installed')" 2>$null
+python -c "import flask; print('installed')" 2>$null
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Installing Python dependencies..." -ForegroundColor Cyan
     pip install -r requirements.txt --quiet
@@ -107,7 +107,7 @@ if ($LASTEXITCODE -ne 0) {
 
 # Check if serve package is installed
 Write-Host "Checking serve package..." -ForegroundColor Yellow
-$serveInstalled = npx serve --version 2>$null
+npx serve --version 2>$null
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Installing serve package..." -ForegroundColor Cyan
     npm install -g serve --quiet

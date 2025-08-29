@@ -1,5 +1,5 @@
-# STServo Controller - Production Startup Script (PowerShell Version)
-Write-Host "STServo Controller - Production Startup Script" -ForegroundColor Green
+# STServo Controller - Cross-Platform Startup Script (PowerShell Version)
+Write-Host "STServo Controller - Cross-Platform Startup Script" -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Green
 Write-Host ""
 
@@ -100,12 +100,12 @@ if ($LASTEXITCODE -ne 0) {
         Read-Host "Press Enter to exit"
         exit 1
     }
-    Write-Host "OK: Python dependencies installed" -ForegroundColor Green
+    Write-Host "OK: Dependencies installed" -ForegroundColor Green
 } else {
-    Write-Host "OK: Python dependencies already installed" -ForegroundColor Green
+    Write-Host "OK: Dependencies already installed" -ForegroundColor Green
 }
 
-# Check serve package
+# Check if serve package is installed
 Write-Host "Checking serve package..." -ForegroundColor Yellow
 $serveInstalled = npx serve --version 2>$null
 if ($LASTEXITCODE -ne 0) {
@@ -148,10 +148,8 @@ Write-Host "Both servers are now running in separate windows." -ForegroundColor 
 Write-Host "To stop the servers, close the terminal windows or run: taskkill /f /im python.exe && taskkill /f /im node.exe" -ForegroundColor Yellow
 Write-Host ""
 
-# Open browser
 Write-Host "Opening browser..." -ForegroundColor Yellow
 Start-Process "http://localhost:3000"
-
 Write-Host ""
 Write-Host "Press any key to close this launcher..." -ForegroundColor Yellow
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+Read-Host

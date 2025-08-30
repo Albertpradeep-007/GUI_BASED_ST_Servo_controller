@@ -115,8 +115,8 @@ echo ""
 echo "[1/2] Starting Backend Server..."
 echo "Starting Flask backend on http://localhost:5000"
 
-# Start backend in background
-$PYTHON_CMD backend/app.py &
+# Start backend in background (run from backend directory to fix import path)
+cd backend && $PYTHON_CMD app.py &
 BACKEND_PID=$!
 
 echo "Backend started with PID: $BACKEND_PID"
@@ -141,7 +141,7 @@ echo "Backend API:  http://localhost:5000"
 echo "Frontend UI: http://localhost:3000"
 echo ""
 echo "Both servers are now running in the background."
-echo "To stop the servers, run: pkill -f 'python.*backend/app.py' && pkill -f 'npx serve.*frontend-build'"
+echo "To stop the servers, run: pkill -f 'python.*app.py' && pkill -f 'npx serve.*frontend-build'"
 echo ""
 
 # Try to open browser (platform dependent)
@@ -157,5 +157,5 @@ echo "Press Ctrl+C to stop all servers..."
 echo ""
 
 # Wait for user to stop
-trap 'echo ""; echo "Stopping servers..."; kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; echo "Servers stopped."; exit 0' INT
+trap 'echo ""; echo "Stopping servers..."; kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; pkill -f "python.*app.py" 2>/dev/null; pkill -f "npx serve.*frontend-build" 2>/dev/null; echo "Servers stopped."; exit 0' INT
 wait

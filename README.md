@@ -120,5 +120,6 @@ The scripts automatically check for existing dependencies and only install what'
 
 - **Frontend**: React 18.2.0 with Tailwind CSS
 - **Backend**: Flask 2.3.3 with CORS support
-- **Build Date**: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
-- **Version**: 1.0.0 Production
+- **Build Date**: 30-08-2025 
+-- **Version**: 1.0.0 Production
+-

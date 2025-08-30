@@ -17,7 +17,7 @@ from flask_cors import CORS
 import os
 
 # Add parent directory to path for STservo_sdk
-sys.path.append("../../../")
+sys.path.append("../")
 from STservo_sdk import *
 from STservo_sdk.sts import (
     STS_ACC, STS_MODE, STS_GOAL_SPEED_L, STS_GOAL_SPEED_H,

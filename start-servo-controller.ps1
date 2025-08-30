@@ -124,7 +124,7 @@ Write-Host ""
 Write-Host "[1/2] Starting Backend Server..." -ForegroundColor Yellow
 Write-Host "Starting Flask backend on http://localhost:5000" -ForegroundColor Cyan
 
-$backendCommand = "cd /d $PWD && call venv\Scripts\activate.bat && echo Starting Backend Server... && echo Backend will be available at: http://localhost:5000 && echo. && python backend/app.py"
+$backendCommand = "cd /d $PWD && call venv\Scripts\activate.bat && echo Starting Backend Server... && echo Backend will be available at: http://localhost:5000 && echo. && cd backend && python app.py"
 Start-Process cmd -ArgumentList "/k", $backendCommand -WindowStyle Normal
 
 Write-Host "Waiting for backend to initialize..." -ForegroundColor Yellow
